@@ -1,11 +1,11 @@
 /**
  * @author:       wangxuebing
  * @fileName:     passwordhandle.go
- * @date:         2023/1/14 16:53
+ * @date:         2023/1/14 17:04
  * @description:
  */
 
-package core
+package encryptionutil
 
 import (
 	"bytes"
