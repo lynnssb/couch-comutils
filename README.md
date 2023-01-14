@@ -1,2 +1,2 @@
 # couch-bsutils
-golang常用工具包
+golang通用工具包
