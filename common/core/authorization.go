@@ -16,7 +16,8 @@ const (
 	CtxAuth = "Authorization"
 )
 const (
-	CtxAuthKeyByJwtUserId = "JwtUserId" //default
+	CtxAuthKeyByJwtTenantId = "JwtTenantId"
+	CtxAuthKeyByJwtUserId   = "JwtUserId"
 )
 
 // GeneratorJwtToken Generator Token
@@ -38,7 +39,17 @@ func GeneratorJwtToken(val string, secretKey string, iat, seconds int64, userId 
 	return token.SignedString([]byte(secretKey))
 }
 
-// GetAuthJwtKeyUserId 根据ctx解析token中的jwtUserId
+// GetAuthJwtKeyTenantId 根据ctx解析token中的JwtTenantId
+// Params:
+//
+//	ctx:
+//	val: (默认可以传:CtxAuthKeyByJwtTenantId <如需其他可以自定义>)
+func GetAuthJwtKeyTenantId(ctx context.Context, val string) string {
+	tenantId := ctx.Value(val).(string)
+	return tenantId
+}
+
+// GetAuthJwtKeyUserId 根据ctx解析token中的jwtTenantId
 // Params:
 //
 //	ctx:

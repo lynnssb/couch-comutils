@@ -13,9 +13,9 @@ import (
 )
 
 const (
-	defaultCode             = 1001
-	databaseErrCode         = 1002
-	databaseErrNoneDataCode = 1003
+	defaultCode             = 1001 //默认错误
+	databaseErrCode         = 1002 //数据库查询错误
+	databaseErrNoneDataCode = 1003 //数据库查询数据为空错误
 )
 
 type CodeErr struct {
