@@ -1,6 +1,6 @@
 module couch-comutils
 
-go 1.19
+go 1.20
 
 require (
 	github.com/alibabacloud-go/dysmsapi-20170525/v3 v3.0.5
