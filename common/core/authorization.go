@@ -43,9 +43,8 @@ func GeneratorJwtToken(val string, secretKey string, iat, seconds int64, userId 
 // Params:
 //
 //	ctx:
-//	val: (默认可以传:CtxAuthKeyByJwtTenantId <如需其他可以自定义>)
-func GetAuthJwtKeyTenantId(ctx context.Context, val string) string {
-	tenantId := ctx.Value(val).(string)
+func GetAuthJwtKeyTenantId(ctx context.Context) string {
+	tenantId := ctx.Value(CtxAuthKeyByJwtTenantId).(string)
 	return tenantId
 }
 
@@ -53,8 +52,17 @@ func GetAuthJwtKeyTenantId(ctx context.Context, val string) string {
 // Params:
 //
 //	ctx:
-//	val: (默认可以传:CtxAuthKeyByJwtUserId <如需其他可以自定义>)
-func GetAuthJwtKeyUserId(ctx context.Context, val string) string {
-	userId := ctx.Value(val).(string)
+func GetAuthJwtKeyUserId(ctx context.Context) string {
+	userId := ctx.Value(CtxAuthKeyByJwtUserId).(string)
 	return userId
+}
+
+// GetAuthJwtKeyValue 根据ctx解析token中自定义的值
+// Params:
+//
+//	ctx:
+//	val: (自定义值)
+func GetAuthJwtKeyValue(ctx context.Context, val string) string {
+	value := ctx.Value(val).(string)
+	return value
 }
