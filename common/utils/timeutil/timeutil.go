@@ -20,7 +20,7 @@ func TimeMilliFormat(t int64) string {
 		timeFormat = "-"
 	} else {
 		tm := time.Unix(t/1e3, 0)
-		timeFormat = tm.Format("2006-01-02 15:04:05")
+		timeFormat = tm.Format(time.DateTime)
 	}
 	return timeFormat
 }
@@ -31,7 +31,7 @@ func TimeFormat(n *time.Time) string {
 	if n == nil {
 		timeFormat = "——"
 	} else {
-		timeFormat = n.Format("2006-01-02 15:04:05")
+		timeFormat = n.Format(time.DateTime)
 	}
 	return timeFormat
 }
@@ -42,7 +42,7 @@ func TimeFormatYMD(n *time.Time) string {
 	if n == nil {
 		timeFormat = "—-"
 	} else {
-		timeFormat = n.Format("2006-01-02")
+		timeFormat = n.Format(time.DateOnly)
 	}
 	return timeFormat
 }

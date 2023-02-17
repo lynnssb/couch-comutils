@@ -18,6 +18,8 @@ const (
 const (
 	CtxAuthKeyByJwtTenantId = "JwtTenantId"
 	CtxAuthKeyByJwtUserId   = "JwtUserId"
+	CtxAuthKeyByIsTenant    = "JwtIsTenant" //是否是租主  [true:是;false:否]
+	CtxAuthKeyByIsAdmin     = "JwtIsAdmin"  //是否是管理员 [true:是;false:否]
 )
 
 // GeneratorJwtToken Generator Token
@@ -62,7 +64,7 @@ func GetAuthJwtKeyUserId(ctx context.Context) string {
 //
 //	ctx:
 //	val: (自定义值)
-func GetAuthJwtKeyValue(ctx context.Context, val string) string {
-	value := ctx.Value(val).(string)
+func GetAuthJwtKeyValue(ctx context.Context, val string) interface{} {
+	value := ctx.Value(val)
 	return value
 }
