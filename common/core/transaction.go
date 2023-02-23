@@ -19,10 +19,10 @@ type (
 	txDB struct {
 		db *gorm.DB
 	}
-)
 
-// 用来承载事务上下文
-type contextTxKey struct{}
+	// 用来承载事务上下文
+	contextTxKey struct{}
+)
 
 func NewTransaction(db *gorm.DB) Transaction {
 	return &txDB{db: db}
