@@ -8,7 +8,6 @@
 package sms_api
 
 import (
-	"errors"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	dysmsapi "github.com/alibabacloud-go/dysmsapi-20170525/v2/client"
 	util "github.com/alibabacloud-go/tea-utils/service"
@@ -69,11 +68,11 @@ func createAliSmsClient(accessKeyId, accessKeySecret string) (*dysmsapi.Client, 
 //	phoneNumbers:电话号码
 //
 // Returns:
-func SendAliSms(accessKeyId, accessKeySecret, signName, tmpCode, tmpParam, phoneNumbers string) (bool, error) {
+func SendAliSms(accessKeyId, accessKeySecret, signName, tmpCode, tmpParam, phoneNumbers string) (*dysmsapi.SendSmsResponse, error) {
 	var resp *dysmsapi.SendSmsResponse
 	client, err := createAliSmsClient(accessKeyId, accessKeySecret)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
 	smsRequest := dysmsapi.SendSmsRequest{
 		PhoneNumbers:  &phoneNumbers,
@@ -85,17 +84,9 @@ func SendAliSms(accessKeyId, accessKeySecret, signName, tmpCode, tmpParam, phone
 	runtime.ReadTimeout = tea.Int(10000)
 	resp, err = client.SendSmsWithOptions(&smsRequest, runtime)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
-	if *resp.StatusCode == 200 {
-		if *resp.Body.Code == "OK" && *resp.Body.Message == "OK" {
-			return true, nil
-		} else {
-			return false, errors.New(*resp.Body.Message)
-		}
-	} else {
-		return false, errors.New(*resp.Body.Message)
-	}
+	return resp, nil
 }
 
 // SendBatchAliSms 批量发送短信
