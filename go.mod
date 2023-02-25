@@ -8,7 +8,7 @@ require (
 	github.com/alibabacloud-go/tea v1.1.19
 	github.com/alibabacloud-go/tea-utils/v2 v2.0.1
 	github.com/bwmarrin/snowflake v0.3.0
-	github.com/golang-jwt/jwt/v4 v4.4.3
+	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/zeromicro/go-zero v1.4.3
 	golang.org/x/crypto v0.0.0-20220622213112-05595931fe9d
 	gorm.io/gorm v1.24.5
