@@ -7,14 +7,15 @@
 
 package characterutil
 
-import "bytes"
+import (
+	"strings"
+)
 
-// StitchingBufStr 字符串拼接
-func StitchingBufStr(args ...string) (str string) {
-	var buf bytes.Buffer
+// StitchingBuilderStr 字符串拼接
+func StitchingBuilderStr(args ...string) string {
+	var build strings.Builder
 	for _, v := range args {
-		buf.WriteString(v)
+		build.WriteString(v)
 	}
-	str = buf.String()
-	return
+	return build.String()
 }

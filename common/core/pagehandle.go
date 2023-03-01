@@ -30,7 +30,7 @@ func PageHandle(page, pageSize int, filter *string) PageResult {
 	if filter != nil {
 		_filter := strings.TrimSpace(*filter)
 		if len(_filter) > 0 {
-			_f := characterutil.StitchingBufStr("%", _filter, "%")
+			_f := characterutil.StitchingBuilderStr("%", _filter, "%")
 			filter = &_f
 		}
 	}
@@ -44,7 +44,7 @@ func PageHandle(page, pageSize int, filter *string) PageResult {
 func Filter(filter string) string {
 	_filter := strings.TrimSpace(filter)
 	if len(_filter) > 0 {
-		return characterutil.StitchingBufStr("%", _filter, "%")
+		return characterutil.StitchingBuilderStr("%", _filter, "%")
 	}
 	return ""
 }
